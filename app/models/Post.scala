@@ -1,5 +1,6 @@
 package models
 
+import io.swagger.annotations._
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
@@ -8,8 +9,11 @@ import play.api.mvc.Results._
 import play.api.i18n.Messages.Implicits._
 import play.api.Play.current
 
-case class Post(title: String, content: String) {
-  var id: Int =0
+@ApiModel(description = "A post of user, which has Title and Content")
+case class Post(
+  @ApiModelProperty(value="Title of post", required=true) title: String,
+  @ApiModelProperty(value="Content of post", required=true) content: String) {
+  @ApiModelProperty(hidden=true) var id: Int = 0
 }
 
 object Post extends BodyParsers {
