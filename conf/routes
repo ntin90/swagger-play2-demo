@@ -9,8 +9,5 @@ GET     /post/:id                   @controllers.PostController.show(id: Int)
 POST    /post/:id                   @controllers.PostController.update(id: Int)
 DELETE  /post/:id                   @controllers.PostController.remove(id: Int)
 
-# Swagger file endpoint
-GET     /swagger.json               @controllers.ApiHelpController.getResources
-
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
