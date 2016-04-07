@@ -1,10 +1,12 @@
 package controllers
 
 import javax.inject._
+import io.swagger.annotations._
 import models.Post
 import play.api.libs.json.{Json, JsArray}
 import play.api.mvc._
 
+@Api
 class PostController @Inject() extends Controller {
 
   /**
