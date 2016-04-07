@@ -16,5 +16,14 @@ object Post extends BodyParsers {
 
   implicit val format = Json.format[Post]
 
+  val form = Form(
+    mapping(
+      "title" -> text,
+      "content" -> text
+    )(Post.apply)(Post.unapply)
+  )
+
+  val bodyParser = parse.form[Post](form, onErrors = x => BadRequest(x.errorsAsJson))
+
 }
 

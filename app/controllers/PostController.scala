@@ -24,18 +24,16 @@ class PostController @Inject() extends Controller {
     Ok(Json.toJson(post))
   }
 
-  def insert = Action { request =>
+  def insert = Action(Post.bodyParser) { request =>
     // Insert post put here
-    val jsBody = request.body.asJson.get
-    val post = Post((jsBody \ "title").as[String], (jsBody \ "content").as[String])
+    val post = request.body
 
     Created(Json.toJson(post))
   }
 
-  def update(id: Int) = Action { request =>
+  def update(id: Int) = Action(Post.bodyParser) { request =>
     // Update post put here
-    val jsBody = request.body.asJson.get
-    val post = Post((jsBody \ "title").as[String], (jsBody \ "content").as[String])
+    val post = request.body
 
     Ok(Json.toJson(post))
   }
