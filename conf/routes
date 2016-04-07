@@ -1,0 +1,16 @@
+# Routes
+# ~~~~~~
+
+
+# An example controller contains RESTful APIs for resource Post
+GET     /post                       @controllers.PostController.list(offset: Int ?= 0, size: Int ?= 10)
+POST    /post                       @controllers.PostController.insert
+GET     /post/:id                   @controllers.PostController.show(id: Int)
+POST    /post/:id                   @controllers.PostController.update(id: Int)
+DELETE  /post/:id                   @controllers.PostController.remove(id: Int)
+
+# Swagger file endpoint
+GET     /swagger.json               @controllers.ApiHelpController.getResources
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
